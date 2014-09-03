@@ -1,3 +1,4 @@
+<?php include('config.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +8,14 @@
     <meta name="viewport" content="width=device-width, , initial-scale=1, user-scalable=no">
     <script type="text/javascript" src="js/images.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+
+    <link href="<?php echo $theme; ?>/css/style.css" rel="stylesheet" title="Style" />
 </head>
 <body>
 
     <div class="header wrapper rounds wrapper-background">
 
-        <h1>Documentacion Area :)</h1>
+        <h1>Members Area :)</h1>
             <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
         <ul>
             <li><a href="index.php">Начало</a></li>
@@ -30,23 +33,39 @@
 
         <div class="content">
 
-            <h1>Simple Login form With PM messages</h1>
+            <h1>Simple Login form With PM messages - List of users:</h1>
 
-            <a href="https://bitbucket.org/VasilSlavchev/simpleloginformwithpm/overview">
-                https://bitbucket.org/VasilSlavchev/simpleloginformwithpm/overview
-            </a>
+            <div class="users">
 
-            <li>This is config file for Simple PM Message by Vaseto^^ 2014.</li>
+                <p>This is the list of members:</p>
 
-            <li>(VasilSLavchev.net or vasilslavchev@gmail.com)</li>
+                <table>
+                    <tr>
+                        <th width="1%">ID:</th>
+                        <th width="1%">Username</th>
+                        <th width="1%">Email</th>
+                    </tr>
+                    <?php
+                //We get the IDs, usernames and emails of users
+                    $req = mysql_query('select id, username, email from users');
 
-            <li>https://bitbucket.org/VasilSlavchev/simpleloginformwithpm</li>
+                    //while($dnn = mysql_fetch_array($req))
+                    while($dnn = mysql_fetch_array($req) or die ($req.'<p><code>'.mysql_error().'</code></p>'))
 
-            <li>This project is under creative commons license: CC BY-NC-SA.</li>
+                        // fixed by me!!!
+                    {
+                        ?>
+                        <tr>
+                            <td class="left"><?php echo $dnn['id']; ?></td>
+                            <td class="left"><a href="profile.php?id=<?php echo $dnn['id']; ?>"><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></a></td>
+                            <td class="left"><?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </table>
 
-            <li>https://creativecommons.org/licenses/by-nc-sa/2.5/bg/</li>
-
-            <li>https://creativecommons.org/licenses/by-nc-sa/2.5/bg/deed.en</li>
+            </div><!-- end of /login-->
 
         </div><!-- end of /content-->
 

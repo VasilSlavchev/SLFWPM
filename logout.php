@@ -8,12 +8,14 @@
     <meta name="viewport" content="width=device-width, , initial-scale=1, user-scalable=no">
     <script type="text/javascript" src="js/images.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+
+    <link href="<?php echo $theme; ?>/css/style.css" rel="stylesheet" title="Style" />
 </head>
 <body>
 
     <div class="header wrapper rounds wrapper-background">
 
-        <h1>Login Area :)</h1>
+        <h1>Members Area :)</h1>
             <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
         <ul>
             <li><a href="index.php">Начало</a></li>
@@ -32,7 +34,7 @@
 
         <div class="content">
 
-            <h1>Simple Login form With PM messages: Login Area.</h1>
+            <h1>Simple Login form With PM messages: Logout.</h1>
 
             <div class="login">
 
@@ -118,9 +120,9 @@
 
             </div><!-- end of /login-->
 
-    </div><!-- end of /content-->
+        </div><!-- end of /content-->
 
-</div><!-- end of /container-->
+    </div><!-- end of /container-->
 
     <div class="footer wrapper rounds wrapper-background">
         <ul>

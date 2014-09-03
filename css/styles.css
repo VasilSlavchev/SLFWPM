@@ -25,15 +25,14 @@ body {
 .wrapper {
     margin: 0 auto;
     padding: 0px;
-    height: 100%;
     width: 800px;
+/*    height: 100%;*/
 }
 
 .wrapper-background {
     background-image: url('../images/background_square.png');
 /*    background-image: url('../images/probno.png');*/
-/*    background: #0ca3d2;
-    opacity: 0.6;*/
+/*    background: #0ca3d2; opacity: 0.6;*/
 }
 
 .wrapper-background2 {
@@ -52,15 +51,29 @@ body {
 ==============================================================*/
 .header {
     margin: 0 auto;
-    height: 100px;
-    border: 1px solid red;
+/*    height: 100px;
+    width: 100%;*/
 }
+
+.header .logo {
+    position: absolute;
+    top: 35px;
+    left: 290px;
+    float: left;
+    width: 85px;
+    height: 85px;
+}
+
+.header h1 {
+        font-size: 24px;
+}
+
 .header ul {
     margin: 15px;
-    margin-left: 135px;
-/*    padding: 15px;*/
+    margin-left: 100px;
     text-decoration:none;
     list-style-type: none;
+    padding: 0 0 0 0;
 }
 
 .header ul li {
@@ -68,10 +81,13 @@ body {
     padding: 5px;
 }
 
-.header ul li a{
+.header a {
+    color: #ffffff;
     display: inline;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
     list-style-type: none;
-    color: white;
 }
 
 .header ul  a:hover {
@@ -79,42 +95,88 @@ body {
 }
 
 /*==============================================================
-                    //Container//
+                    Container
 ==============================================================*/
 .container {
     margin: 10px auto;
     height: 400px;
     width: 800px;
-/*    background: #0ca3d2;*/
     border-radius: 20px;
-}
-
-.content {
-    padding: 10px 0 0 35px;
+/*    background: #0ca3d2;*/
 }
 
 /*==============================================================
-                    //Messages//
+                    Content
+==============================================================*/
+.content {
+    padding: 5px 5px 5px 5px;
+}
+
+/*==============================================================
+                    Users
+==============================================================*/
+.users {
+    margin: 15px 15px 15px 15px;
+    padding: 5px 5px 5px 5px;
+    border-spacing: 0px;
+    background: #ffffff;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+}
+
+/*==============================================================
+                    Messages
 ==============================================================*/
 .messages {
+    margin: 20px auto;
     width: 310px;
+    padding: 20px 20px 20px;
     background: #76EE00;
     border-radius: 20px;
+    border: 1px solid red;
 }
 
 /*==============================================================
-                    //Login//
+                    Login
 ==============================================================*/
 .login {
-    margin: 0px auto;
-    padding: 20px 20px 20px;
-    width: 310px;
-    background: white;
-    border-radius: 5px;
+    margin: 30px auto;
     top: 50px;
+    width: 350px;
+    padding: 20px 20px 20px;
+    background: #fff;
+    border-radius: 10px;
 }
 
+.register {
+    margin: 0px auto;
+    padding: 20px;
+    top: 50px;
+    width: 450px;
+    height: 300px;
+    background: #fff;
+    border-radius: 10px;
+}
 
+.register fieldset {
+    border: hidden;
+    float: right;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+}
+
+.register .button {
+    position: relative;
+    left: 230px;
+    top: 60px;
+    float: right;
+    border: 1px solid #0ca3d2;
+}
+/*==============================================================
+                    forms
+==============================================================*/
 h1 {
     margin: 0;
     line-height: 40px;
@@ -144,6 +206,7 @@ p.remember_me {
         margin-right: 4px;
         vertical-align: middle;
     }
+
 }
 
     p.submit {
@@ -192,120 +255,324 @@ input[type=submit] {
     border-radius: 20px;
 }
 
+.footer ul {
+    text-align: center;
+}
+
+.footer ul li {
+    text-align: center;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: red;
+}
+
 /*==============================================================
-                    //Mobile support//
+            //Media query - Mobile support//
 ==============================================================*/
-@media {}
-
-@-o-viewport {
-    width: device-width;
-}
-
-@-ms-viewport {
-    width: device-width;
-}
-
-@-webkit-viewport{
-    width: device-width;
-}
-
-@media screen and (max-device-width: 480px) {
-    @-o-viewport {
-        width: 480px;
+@media only screen and (max-width : 219px) {
+    body {
+        width: 98%;
+        height: 98%;
+        margin: 0;
+        padding: 0;
     }
 
-    @-ms-viewport {
-        width: 480px;
+    .header {
+        width: 100%;
+        height: 100%;
     }
 
-    @-webkit-viewport {
-        width: 480px;
+    .header  ul  li  a {
+        position: relative;
+        left: -100px;
+        display: block;
+        top: 0;
+        right: 0;
+        padding-right: 8px;
     }
 }
 
 
+@media screen and (max-device-width: 320px) {
+    body {
+        width: 96%;
+        height: 96%;
+        background-size: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body h1,p ,ul, li, a{
+        color: #fff;
+        padding: 2px;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header  ul  li  a {
+        position: relative;
+        display: inline-block;
+        right: 60px;
+        padding-right: 9px;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: scroll;
+    }
+
+    .footer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-device-width: 480px) {
+    body {
+        width: 110%;
+        height: 110%;
+        background-size: 100%;
+    }
+
+    .header {
+        width: 110%;
+        height: 110%;
+    }
+
+    .header  ul  li  a {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        right: 60px;
+        padding-right: 8px;
+    }
+    .container {
+        width: 110%;
+        height: 110%;
+        margin: 0;
+        padding: 0;
+        overflow: scroll;
+    }
+
+    .footer {
+        width: 110%;
+        height: 110%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+@media screen and (min-width: 481px) and (max-device-width: 599px) {
+    body {
+        width: 96%;
+        height: 96%;
+        background-size: 100%;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header  ul  li  a {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        right: 60px;
+        padding-right: 8px;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: scroll;
+    }
+
+    .footer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+@media screen and (min-width: 600px) and (max-device-width: 799px) {
+    body {
+        width: 96%;
+        height: 96%;
+        background-size: 100%;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header  ul  li  a {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        right: 60px;
+        padding-right: 8px;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: scroll;
+    }
+
+    .footer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+@media screen and (min-width: 800px) and (max-device-width: 1000px) {
+    body {
+        width: 96%;
+        height: 96%;
+        background-size: 100%;
+    }
+
+    .header {
+        width: 100%;
+        height: 100%;
+    }
+
+    .header  ul  li  a {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        right: 60px;
+        padding-right: 8px;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: scroll;
+    }
+
+    .footer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+/*
 @media all and (max-width: 600px) {
     body {
-        // extra styles for mobile
+        width: device-width;
     }
-
-    @-o-viewport {
-        width: 600px;
-    }
-
-    @-ms-viewport {
-        width: 600px;
-    }
-
-    @-webkit-viewport {
-        width: 600px;
-    }
+    width: device-width;
 }
 
 @media all and (min-width: 600px) {
     body {
-        // extra styles for desktop
+        width: device-width;
     }
-
-    @-o-viewport {
-        width: 600px;
-    }
-
-    @-ms-viewport {
-        width: 600px;
-    }
-
-    @-webkit-viewport {
-        width: 600px;
-    }
+    width: device-width;
 }
 
+@media all and (min-width: 700px) {
+    body {
+        width: device-width;
+    }
+    width: device-width;
+}
+*/
 
+/*==============================================================
+        Mobile support - Iphone, tablets, desktop.
+==============================================================*/
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-width : 320px) and (max-width : 480px) {
-/* Styles */
+@media only screen and (min-width : 321px) and (max-width : 480px) {
+    body {
+        width: device-width;
+    }
 }
 
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width : 321px) {
-/* Styles */
+    body {
+        width: device-width;
+    }
 }
 
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 320px) {
-/* Styles */
+    body {
+        width: device-width;
+    }
 }
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
-/* Styles */
+    body {
+        width: device-width;
+    }
 }
 
 /* iPads (landscape) ----------- */
 @media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
-/* Styles */
+    body {
+        width: device-width;
+    }
 }
 
 /* iPads (portrait) ----------- */
 @media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
-/* Styles */
+    body {
+        width: device-width;
+    }
 }
 
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1224px) {
-/* Styles */
+    body {
+        width: device-width;
+    }
 }
 
 /* Large screens ----------- */
 @media only screen and (min-width : 1824px) {
-/* Styles */
+    body {
+        width: device-width;
+    }
 }
 
 /* iPhone 4 ----------- */
 @media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
-/* Styles */
+    body {
+        width: device-width;
+    }
 }
-
 /*==============================================================
                     End of style sheet.
 ==============================================================*/

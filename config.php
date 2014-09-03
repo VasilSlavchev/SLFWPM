@@ -37,18 +37,47 @@
                 die("<center><i>Не можа да се свърже към базата данни(Грешка2).</i></center>");
         }
     }
-    echo "<center><i>connected to database.</center></i>";
+
+    //echo "<center><i>connected to database.</center></i>";
+    //echo '<center>"'.$database.'"</center>';
+
+
+        if (isset($_POST['username']) and isset($_POST['password'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $query = "SELECT * FROM `users` WHERE username='$username' and password='$password'";
+
+        $result = mysql_query($query) or die(mysql_error());
+        $count = mysql_num_rows($result);
+
+
+        if ($count == 1){
+            echo $username;
+            $_SESSION['username'] = $username;
+        }else{
+
+            echo "<center>Невалидно Потребителско име или Парола!</center>";
+        }
+    }
+
+
+    // if (!empty($username)){
+    //     echo $username;
+    // }
+    // else {
+    //     echo "wrong!";
+    // }
 
     //Webmaster email.
-    $mail_webmaster = 'mail@example.bg';
+    $mail_webmaster = 'mail@dev.slfwpm';
 
     //Site url domain.
-    $site_url = 'http://example.bg/';
+    $site_url = 'http://dev.slfwpm/';
 
     //Home page file.
     $home_dir = 'index.php';
 
     //Theme directory.
-    $theme = 'default';
+    $theme = 'classic';
 
  ?>
