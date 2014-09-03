@@ -16,7 +16,7 @@
     <div class="header wrapper rounds wrapper-background">
 
         <h1>Members Area :)</h1>
-            <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
+        <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
         <ul>
             <li><a href="index.php">Начало</a></li>
             <li><a href="login.php">Вход</a></li>
@@ -102,35 +102,35 @@
                                     echo '<div class="message">'.$message.'</div>';
                                 }
                             //We display the form
-                        ?>
-                            <div class="content">
-                                <form action="login.php" method="post">
-                                    Please type your IDs to log in:<br />
-                                    <div class="center">
-                                        <label for="username">Username</label><input type="text" name="username" id="username" value="<?php echo htmlentities($ousername, ENT_QUOTES, 'UTF-8'); ?>" /><br />
-                                        <label for="password">Password</label><input type="password" name="password" id="password" /><br />
-                                        <input type="submit" value="Log in" />
-                                    </div>
-                                </form>
-                            </div>
-                        <?php
+                                ?>
+                                <div class="content">
+                                    <form action="login.php" method="post">
+                                        Please type your IDs to log in:<br />
+                                        <div class="center">
+                                            <label for="username">Username</label><input type="text" name="username" id="username" value="<?php echo htmlentities($ousername, ENT_QUOTES, 'UTF-8'); ?>" /><br />
+                                            <label for="password">Password</label><input type="password" name="password" id="password" /><br />
+                                            <input type="submit" value="Log in" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <?php
+                            }
                         }
-                    }
-                ?>
+                        ?>
 
-            </div><!-- end of /login-->
+                    </div><!-- end of /login-->
 
-        </div><!-- end of /content-->
+                </div><!-- end of /content-->
 
-    </div><!-- end of /container-->
+            </div><!-- end of /container-->
 
-    <div class="footer wrapper rounds wrapper-background">
-        <ul>
-            <a href="index.php">SLFWPM</a> by
-            <a href="vaseto.net">Vaseto.net</a>
-            <strong>2014 CC BY-NC-SA.</strong>
-        </ul>
-    </div>
+            <div class="footer wrapper rounds wrapper-background">
+                <ul>
+                    <a href="index.php">SLFWPM</a> by
+                    <a href="vaseto.net">Vaseto.net</a>
+                    <strong>2014 CC BY-NC-SA.</strong>
+                </ul>
+            </div>
 
-</body>
-</html>
+        </body>
+        </html>

@@ -14,12 +14,14 @@
     <div class="header wrapper rounds wrapper-background">
 
         <h1>Configuracion Area :)</h1>
-            <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
+        <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
         <ul>
             <li><a href="index.php">Начало</a></li>
             <li><a href="login.php">Вход</a></li>
             <li><a href="logout.php">Изход</a></li>
+            <li><a href="edit_infos.php.php">Профил</a></li>
             <li><a href="list_users.php">Потребители</a></li>
+            <li><a href="sign_up.php">Регистрация 2</a></li>
             <li><a href="register.php">Регистрация</a></li>
             <li><a href="messages.php">Съобщения</a></li>
             <li><a href="setup-config-database-firstrun.php">Конфигурация</a></li>
@@ -78,60 +80,60 @@
     </div><!-- end of /footer-->
 
     <?php
-        if ( array(
-            isset($_POST['dbhostname']) ||
-            isset($_POST['dbusername']) ||
-            isset($_POST['dbpassword']) ||
-            isset($_POST['database'])))
-        {
+    if ( array(
+        isset($_POST['dbhostname']) ||
+        isset($_POST['dbusername']) ||
+        isset($_POST['dbpassword']) ||
+        isset($_POST['database'])))
+    {
 
-            @$dbhostname = $_POST['dbhostname'];
-            @$dbusername = $_POST['dbusername'];
-            @$dbpassword = $_POST['dbpassword'];
-            @$database = $_POST['database'];
+        @$dbhostname = $_POST['dbhostname'];
+        @$dbusername = $_POST['dbusername'];
+        @$dbpassword = $_POST['dbpassword'];
+        @$database = $_POST['database'];
 
-            print("<center><b>\"Текущи настройки: ('$dbhostname'), ('$dbusername'), ('$dbpassword'), ('$database')\".<br>");
-        }
+        print("<center><b>\"Текущи настройки: ('$dbhostname'), ('$dbusername'), ('$dbpassword'), ('$database')\".<br>");
+    }
 
-        else {
+    else {
 
-            $dbhostname = 'localhost';
-            $dbusername = 'root';
-            $dbpassword = '';
-            $database = 'slfwpm';
-        }
+        $dbhostname = 'localhost';
+        $dbusername = 'root';
+        $dbpassword = '';
+        $database = 'slfwpm';
+    }
 
         //here we login into database.
-        if (!($db = mysql_connect( $dbhostname, $dbusername , $dbpassword ))){
-            die("<i>Не можа да се свърже към базата данни(Грешка1).</i>");
-        }
+    if (!($db = mysql_connect( $dbhostname, $dbusername , $dbpassword ))){
+        die("<i>Не можа да се свърже към базата данни(Грешка1).</i>");
+    }
 
-        else
-        {
-            if (!(mysql_select_db("$database",$db)))  {
-                die("<i>Не можа да се свърже към базата данни(Грешка2).</i>");
-            }
+    else
+    {
+        if (!(mysql_select_db("$database",$db)))  {
+            die("<i>Не можа да се свърже към базата данни(Грешка2).</i>");
         }
-        echo "<i>//Свързан към базата. / Connected to database.//</i>";
+    }
+    echo "<i>//Свързан към базата. / Connected to database.//</i>";
 
         //Generate automaticly db_config.php file.
-        $hostname =
-        "<?php \n".
-        "/* This is automatic genereted config file from -> /setup-config-database-firstrun.php */\n".
-        "/* NOTE: Please edit database info to match your setings if its nesessary.*/\n".
-        '/*'." Do not delete. */\n".
-        '$dbhostname = '."'$dbhostname';\n".
-        '$dbusername = '."'$dbusername';\n".
-        '$dbpassword = '."'$dbpassword';\n".
-        '$database =   '."'$database';\n".
-        "/* Do not delete. */\n ?>";
-        $filename = 'db_config.php';
-        $fh = fopen($filename, 'r') or die("can't open file");
-        $options = array('ftp' => array('overwrite' => true));
-        $stream = stream_context_create($options);
-        $stringData = file_put_contents( $filename, $hostname, 4, $stream);
-        fwrite($fh, $stringData);
-        fclose($fh);
+    $hostname =
+    "<?php \n".
+    "/* This is automatic genereted config file from -> /setup-config-database-firstrun.php */\n".
+    "/* NOTE: Please edit database info to match your setings if its nesessary.*/\n".
+    '/*'." Do not delete. */\n".
+    '$dbhostname = '."'$dbhostname';\n".
+    '$dbusername = '."'$dbusername';\n".
+    '$dbpassword = '."'$dbpassword';\n".
+    '$database =   '."'$database';\n".
+    "/* Do not delete. */\n ?>";
+    $filename = 'db_config.php';
+    $fh = fopen($filename, 'r') or die("can't open file");
+    $options = array('ftp' => array('overwrite' => true));
+    $stream = stream_context_create($options);
+    $stringData = file_put_contents( $filename, $hostname, 4, $stream);
+    fwrite($fh, $stringData);
+    fclose($fh);
 
     ?>
     <p><?php echo( "All right, buddy!" ); ?></p>

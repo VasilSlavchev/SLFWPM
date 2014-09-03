@@ -16,12 +16,14 @@
     <div class="header wrapper rounds wrapper-background">
 
         <h1>Members Area :)</h1>
-            <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
+        <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
         <ul>
             <li><a href="index.php">Начало</a></li>
             <li><a href="login.php">Вход</a></li>
             <li><a href="logout.php">Изход</a></li>
+            <li><a href="edit_infos.php.php">Профил</a></li>
             <li><a href="list_users.php">Потребители</a></li>
+            <li><a href="sign_up.php">Регистрация 2</a></li>
             <li><a href="register.php">Регистрация</a></li>
             <li><a href="messages.php">Съобщения</a></li>
             <li><a href="setup-config-database-firstrun.php">Конфигурация</a></li>
@@ -36,7 +38,7 @@
 
             <h1>Simple Login form With PM messages: Edit info.</h1>
 
-            <div class="login">
+            <div class="register">
 
                 <?php
                 //We check if the user is logged
@@ -80,123 +82,123 @@
                                             $form = false;
                                             //We delete the old sessions so the user need to log again
                                             unset($_SESSION['username'], $_SESSION['userid']);
-                ?>
-                <div class="message">Your informations have successfuly been updated. You need to log again.<br />
-                <a href="connexion.php">Log in</a></div>
-                <?php
+                                            ?>
+                                            <div class="message">Your informations have successfuly been updated. You need to log again.<br />
+                                                <a href="login.php">Log in</a></div>
+                                                <?php
+                                            }
+                                            else
+                                            {
+                                            //Otherwise, we say that an error occured
+                                                $form = true;
+                                                $message = 'An error occurred while updating your informations.';
+                                            }
                                         }
                                         else
                                         {
-                                            //Otherwise, we say that an error occured
+                                        //Otherwise, we say the username is not available
                                             $form = true;
-                                            $message = 'An error occurred while updating your informations.';
+                                            $message = 'The username you want to use is not available, please choose another one.';
                                         }
                                     }
                                     else
                                     {
-                                        //Otherwise, we say the username is not available
+                                    //Otherwise, we say the email is not valid
                                         $form = true;
-                                        $message = 'The username you want to use is not available, please choose another one.';
+                                        $message = 'The email you entered is not valid.';
                                     }
                                 }
                                 else
                                 {
-                                    //Otherwise, we say the email is not valid
+                                //Otherwise, we say the password is too short
                                     $form = true;
-                                    $message = 'The email you entered is not valid.';
+                                    $message = 'Your password must contain at least 6 characters.';
                                 }
                             }
                             else
                             {
-                                //Otherwise, we say the password is too short
+                            //Otherwise, we say the passwords are not identical
                                 $form = true;
-                                $message = 'Your password must contain at least 6 characters.';
+                                $message = 'The passwords you entered are not identical.';
                             }
                         }
                         else
                         {
-                            //Otherwise, we say the passwords are not identical
                             $form = true;
-                            $message = 'The passwords you entered are not identical.';
+                        }
+                        if($form)
+                        {
+                        //We display a message if necessary
+                            if(isset($message))
+                            {
+                                echo '<strong>'.$message.'</strong>';
+                            }
+                        //If the form has already been sent, we display the same values
+                            if(isset($_POST['username'],$_POST['password'],$_POST['email']))
+                            {
+                                $pseudo = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8');
+                                if($_POST['password']==$_POST['passverif'])
+                                {
+                                    $password = htmlentities($_POST['password'], ENT_QUOTES, 'UTF-8');
+                                }
+                                else
+                                {
+                                    $password = '';
+                                }
+                                $email = htmlentities($_POST['email'], ENT_QUOTES, 'UTF-8');
+                                $avatar = htmlentities($_POST['avatar'], ENT_QUOTES, 'UTF-8');
+                            }
+                            else
+                            {
+                            //otherwise, we display the values of the database
+                                $dnn = mysql_fetch_array(mysql_query('select username,password,email,avatar from users where username="'.$_SESSION['username'].'"'));
+                                $username = htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8');
+                                $password = htmlentities($dnn['password'], ENT_QUOTES, 'UTF-8');
+                                $email = htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8');
+                                $avatar = htmlentities($dnn['avatar'], ENT_QUOTES, 'UTF-8');
+                            }
+                        //We display the form
+                            ?>
+                            <div class="content">
+                                <form action="edit_infos.php" method="post">
+                                    You can edit your informations:<br />
+                                    <div class="center">
+                                        <fieldset><label for="username">Username</label><input type="text" name="username" id="username" value="<?php echo $username; ?>" /><br /></fieldset>
+                                        <fieldset><label for="password">Password<span class="small">(6 characters min.)</span></label><input type="password" name="password" id="password" value="<?php echo $password; ?>" /><br /></fieldset>
+                                        <fieldset><label for="passverif">Password<span class="small">(verification)</span></label><input type="password" name="passverif" id="passverif" value="<?php echo $password; ?>" /><br /></fieldset>
+                                        <fieldset><label for="email">Email</label><input type="text" name="email" id="email" value="<?php echo $email; ?>" /><br /></fieldset>
+                                        <fieldset><label for="avatar">Avatar<span class="small">(optional)</span></label><input type="text" name="avatar" id="avatar" value="<?php echo $avatar; ?>" /><br /></fieldset>
+                                        <fieldset><p><input style="float: left; position:relative; left: 250px;bottom: -50px;" type="submit" value="Send" /></p></br></br></fieldset>
+                                    </div>
+                                </form>
+                            </div>
+                            <?php
                         }
                     }
                     else
                     {
-                        $form = true;
-                    }
-                    if($form)
-                    {
-                        //We display a message if necessary
-                        if(isset($message))
-                        {
-                            echo '<strong>'.$message.'</strong>';
+                        ?>
+                        <div class="message">To access this page, you must be logged.<br />
+                            <a href="connexion.php">Log in</a></div>
+                            <?php
                         }
-                        //If the form has already been sent, we display the same values
-                        if(isset($_POST['username'],$_POST['password'],$_POST['email']))
-                        {
-                            $pseudo = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8');
-                            if($_POST['password']==$_POST['passverif'])
-                            {
-                                $password = htmlentities($_POST['password'], ENT_QUOTES, 'UTF-8');
-                            }
-                            else
-                            {
-                                $password = '';
-                            }
-                            $email = htmlentities($_POST['email'], ENT_QUOTES, 'UTF-8');
-                            $avatar = htmlentities($_POST['avatar'], ENT_QUOTES, 'UTF-8');
-                        }
-                        else
-                        {
-                            //otherwise, we display the values of the database
-                            $dnn = mysql_fetch_array(mysql_query('select username,password,email,avatar from users where username="'.$_SESSION['username'].'"'));
-                            $username = htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8');
-                            $password = htmlentities($dnn['password'], ENT_QUOTES, 'UTF-8');
-                            $email = htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8');
-                            $avatar = htmlentities($dnn['avatar'], ENT_QUOTES, 'UTF-8');
-                        }
-                        //We display the form
-                ?>
-                <div class="content">
-                    <form action="edit_infos.php" method="post">
-                        You can edit your informations:<br />
-                        <div class="center">
-                            <label for="username">Username</label><input type="text" name="username" id="username" value="<?php echo $username; ?>" /><br />
-                            <label for="password">Password<span class="small">(6 characters min.)</span></label><input type="password" name="password" id="password" value="<?php echo $password; ?>" /><br />
-                            <label for="passverif">Password<span class="small">(verification)</span></label><input type="password" name="passverif" id="passverif" value="<?php echo $password; ?>" /><br />
-                            <label for="email">Email</label><input type="text" name="email" id="email" value="<?php echo $email; ?>" /><br />
-                            <label for="avatar">Avatar<span class="small">(optional)</span></label><input type="text" name="avatar" id="avatar" value="<?php echo $avatar; ?>" /><br />
-                            <input type="submit" value="Send" />
-                        </div>
-                    </form>
-                </div>
-                <?php
-                    }
-                }
-                else
-                {
-                ?>
-                <div class="message">To access this page, you must be logged.<br />
-                <a href="connexion.php">Log in</a></div>
-                <?php
-                }
-                ?>
+                        ?>
 
 
 
-            </div><!-- end of /login-->
+                    </div><!-- end of /login-->
 
-        </div><!-- end of /content-->
+                </div><!-- end of /content-->
 
-    </div><!-- end of /container-->
+            </div><!-- end of /container-->
 
-    <div class="footer wrapper rounds wrapper-background">
-        <ul>
-            <a href="index.php">SLFWPM</a> by
-            <a href="vaseto.net">Vaseto.net</a>
-            <strong>2014 CC BY-NC-SA.</strong>
-        </ul>
-    </div>
+            <div class="footer wrapper rounds wrapper-background">
+                <ul>
+                    <a href="index.php">SLFWPM</a> by
+                    <a href="vaseto.net">Vaseto.net</a>
+                    <strong>2014 CC BY-NC-SA.</strong>
+                </ul>
+            </div>
 
-</body>
-</html>
+        </body>
+        </html>
