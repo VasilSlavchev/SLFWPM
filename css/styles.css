@@ -1,32 +1,37 @@
+/*==============================================================
+            SLFWPM by Vaaseto, Vasil Slavchev 2014
+==============================================================*/
 /*
- * //-------------------- This is style.css ------------------//
- * SLFWPM - Simple Login Form With PM Messages.
+ * -------------------- This is style.css ----------------------
+ * SLFWPM - Simple Login Form With PM Messages by Vaseto.net
  * This is config file for Simple PM Message by Vaseto^^ 2014.
  * More at: (VasilSLavchev.net or vasilslavchev@gmail.com).
  * https://bitbucket.org/VasilSlavchev/simpleloginformwithpm
  * This project is under creative commons license: CC BY-NC-SA.
  * https://creativecommons.org/licenses/by-nc-sa/2.5/bg/
  * https://creativecommons.org/licenses/by-nc-sa/2.5/bg/deed.en
- * //-------------------- This is style.css ------------------//
+ * ------------------- This is style.css -----------------------
  */
+ /*==============================================================
+                    Body
+==============================================================*/
 body {
     width: auto;
     height: auto;
     color: #404040;
-    background-image: url('../images/background.jpg');
+   /* background-image: url('../images/background2.jpg');*/
 }
 
 .wrapper {
     margin: 0 auto;
-    height: 150px;
+    padding: 0px;
+    height: 100%;
     width: 800px;
-    padding: 15px;
-
 }
 
 .wrapper-background {
-/*    background-image: url('../images/background_square.png');*/
-    background-image: url('../images/probno.png');
+    background-image: url('../images/background_square.png');
+/*    background-image: url('../images/probno.png');*/
 /*    background: #0ca3d2;
     opacity: 0.6;*/
 }
@@ -42,13 +47,18 @@ body {
     border-radius: 15px;
 }
 
+/*==============================================================
+                    //Header//
+==============================================================*/
 .header {
     margin: 0 auto;
     height: 100px;
+    border: 1px solid red;
 }
 .header ul {
     margin: 15px;
-    padding: 15px;
+    margin-left: 135px;
+/*    padding: 15px;*/
     text-decoration:none;
     list-style-type: none;
 }
@@ -68,6 +78,9 @@ body {
     color: red;
 }
 
+/*==============================================================
+                    //Container//
+==============================================================*/
 .container {
     margin: 10px auto;
     height: 400px;
@@ -76,20 +89,22 @@ body {
     border-radius: 20px;
 }
 
-.footer{
-    margin: 0 auto;
-    height: 50px;
-    width: 800px;
-    background: #0ca3d2;
-    border-radius: 20px;
+.content {
+    padding: 10px 0 0 35px;
 }
 
-.massages {
+/*==============================================================
+                    //Messages//
+==============================================================*/
+.messages {
     width: 310px;
     background: #76EE00;
     border-radius: 20px;
 }
 
+/*==============================================================
+                    //Login//
+==============================================================*/
 .login {
     margin: 0px auto;
     padding: 20px 20px 20px;
@@ -101,7 +116,7 @@ body {
 
 
 h1 {
-    margin: -20px -20px 21px;
+    margin: 0;
     line-height: 40px;
     font-size: 15px;
     font-weight: bold;
@@ -165,3 +180,132 @@ input[type=submit] {
     border-radius: 16px;
     outline: 0;
 }
+
+/*==============================================================
+                    //Footer//
+==============================================================*/
+.footer {
+    margin: 0 auto;
+    height: 50px;
+    width: 800px;
+    background: #0ca3d2;
+    border-radius: 20px;
+}
+
+/*==============================================================
+                    //Mobile support//
+==============================================================*/
+@media {}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-webkit-viewport{
+    width: device-width;
+}
+
+@media screen and (max-device-width: 480px) {
+    @-o-viewport {
+        width: 480px;
+    }
+
+    @-ms-viewport {
+        width: 480px;
+    }
+
+    @-webkit-viewport {
+        width: 480px;
+    }
+}
+
+
+@media all and (max-width: 600px) {
+    body {
+        // extra styles for mobile
+    }
+
+    @-o-viewport {
+        width: 600px;
+    }
+
+    @-ms-viewport {
+        width: 600px;
+    }
+
+    @-webkit-viewport {
+        width: 600px;
+    }
+}
+
+@media all and (min-width: 600px) {
+    body {
+        // extra styles for desktop
+    }
+
+    @-o-viewport {
+        width: 600px;
+    }
+
+    @-ms-viewport {
+        width: 600px;
+    }
+
+    @-webkit-viewport {
+        width: 600px;
+    }
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width : 320px) and (max-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
+}
+
+/*==============================================================
+                    End of style sheet.
+==============================================================*/
