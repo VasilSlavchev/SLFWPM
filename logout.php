@@ -21,7 +21,10 @@
             <li><a href="index.php">Начало</a></li>
             <li><a href="login.php">Вход</a></li>
             <li><a href="logout.php">Изход</a></li>
+            <li><a href="read_pm.php">Нови Съобщения</a></li>
+            <li><a href="edit_infos.php.php">Профил</a></li>
             <li><a href="list_users.php">Потребители</a></li>
+            <li><a href="sign_up.php">Регистрация 2</a></li>
             <li><a href="register.php">Регистрация</a></li>
             <li><a href="messages.php">Съобщения</a></li>
             <li><a href="setup-config-database-firstrun.php">Конфигурация</a></li>

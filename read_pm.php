@@ -8,12 +8,14 @@
     <meta name="viewport" content="width=device-width, , initial-scale=1, user-scalable=no">
     <script type="text/javascript" src="js/images.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+
+    <link href="<?php echo $theme; ?>/css/style.css" rel="stylesheet" title="Style" />
 </head>
 <body>
 
     <div class="header wrapper rounds wrapper-background">
 
-        <h1>Messages Area :)</h1>
+        <h1>Members Area :)</h1>
         <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
         <ul>
             <li><a href="index.php">Начало</a></li>
@@ -28,34 +30,35 @@
             <li><a href="setup-config-database-firstrun.php">Конфигурация</a></li>
             <li><a href="read_me.html">Документация</a></li>
         </ul>
+
     </div>
 
     <div class="container wrapper rounds wrapper-background2">
 
         <div class="content">
 
-            <h1>Simple Login form With PM messages: Messages</h1>
+            <h1>Simple Login form With PM messages: List messages.</h1>
 
-            <div class="messages">
+            <div class="register">
 
                 <?php
-                //We check if the user is logged
+//We check if the user is logged
                 if(isset($_SESSION['username']))
                 {
-                //We check if the ID of the discussion is defined
+//We check if the ID of the discussion is defined
                     if(isset($_GET['id']))
                     {
                         $id = intval($_GET['id']);
-                //We get the title and the narators of the discussion
+//We get the title and the narators of the discussion
                         $req1 = mysql_query('select title, user1, user2 from pm where id="'.$id.'" and id2="1"');
                         $dn1 = mysql_fetch_array($req1);
-                //We check if the discussion exists
+//We check if the discussion exists
                         if(mysql_num_rows($req1)==1)
                         {
-                //We check if the user have the right to read this discussion
+//We check if the user have the right to read this discussion
                             if($dn1['user1']==$_SESSION['userid'] or $dn1['user2']==$_SESSION['userid'])
                             {
-                //The discussion will be placed in read messages
+//The discussion will be placed in read messages
                                 if($dn1['user1']==$_SESSION['userid'])
                                 {
                                     mysql_query('update pm set user1read="yes" where id="'.$id.'" and id2="1"');
@@ -66,20 +69,20 @@
                                     mysql_query('update pm set user2read="yes" where id="'.$id.'" and id2="1"');
                                     $user_partic = 1;
                                 }
-                //We get the list of the messages
+//We get the list of the messages
                                 $req2 = mysql_query('select pm.timestamp, pm.message, users.id as userid, users.username, users.avatar from pm, users where pm.id="'.$id.'" and users.id=pm.user1 order by pm.id2');
-                //We check if the form has been sent
+//We check if the form has been sent
                                 if(isset($_POST['message']) and $_POST['message']!='')
                                 {
                                     $message = $_POST['message'];
-                    //We remove slashes depending on the configuration
+    //We remove slashes depending on the configuration
                                     if(get_magic_quotes_gpc())
                                     {
                                         $message = stripslashes($message);
                                     }
-                    //We protect the variables
+    //We protect the variables
                                     $message = mysql_real_escape_string(nl2br(htmlentities($message, ENT_QUOTES, 'UTF-8')));
-                    //We send the message and we change the status of the discussion to unread for the recipient
+    //We send the message and we change the status of the discussion to unread for the recipient
                                     if(mysql_query('insert into pm (id, id2, title, user1, user2, message, timestamp, user1read, user2read)values("'.$id.'", "'.(intval(mysql_num_rows($req2))+1).'", "", "'.$_SESSION['userid'].'", "", "'.$message.'", "'.time().'", "", "")') and mysql_query('update pm set user'.$user_partic.'read="yes" where id="'.$id.'" and id2="1"'))
                                     {
                                         ?>
@@ -97,7 +100,7 @@
                                         }
                                         else
                                         {
-                //We display the messages
+//We display the messages
                                             ?>
                                             <div class="content">
                                                 <h1><?php echo $dn1['title']; ?></h1>
@@ -122,7 +125,7 @@
                                                             </tr>
                                                             <?php
                                                         }
-                //We display the reply form
+//We display the reply form
                                                         ?>
                                                     </table><br />
                                                     <h2>Reply</h2>
@@ -158,7 +161,7 @@
                             }
                             ?>
 
-                        </div><!-- end of /messages-->
+                        </div><!-- end of /login-->
 
                     </div><!-- end of /content-->
 

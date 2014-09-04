@@ -19,6 +19,7 @@
             <li><a href="index.php">Начало</a></li>
             <li><a href="login.php">Вход</a></li>
             <li><a href="logout.php">Изход</a></li>
+            <li><a href="read_pm.php">Нови Съобщения</a></li>
             <li><a href="edit_infos.php.php">Профил</a></li>
             <li><a href="list_users.php">Потребители</a></li>
             <li><a href="sign_up.php">Регистрация 2</a></li>
@@ -43,7 +44,7 @@
                 if(isset($_SESSION['username']))
                 {
                     //We log him out by deleting the username and userid sessions
-                    unset($_SESSION['username'], $_SESSION['userid']);
+                        unset($_SESSION['username'], $_SESSION['userid']);
                     ?>
                     <div class="message">You have successfuly been loged out.<br />
                         <a href="<?php echo $site_url; ?>">Home</a></div>

@@ -21,6 +21,7 @@
             <li><a href="index.php">Начало</a></li>
             <li><a href="login.php">Вход</a></li>
             <li><a href="logout.php">Изход</a></li>
+            <li><a href="read_pm.php">Нови Съобщения</a></li>
             <li><a href="edit_infos.php.php">Профил</a></li>
             <li><a href="list_users.php">Потребители</a></li>
             <li><a href="sign_up.php">Регистрация 2</a></li>
@@ -38,17 +39,16 @@
 
             <h1>Simple Login form With PM messages: List messages.</h1>
 
-            <div class="login">
-
+            <div class="register">
 
                 <?php
-                //We check if the user is logged
+//We check if the user is logged
                 if(isset($_SESSION['username']))
                 {
-                //We list his messages in a table
-                //Two queries are executes, one for the unread messages and another for read messages
-                    $req1 = mysql_query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.username from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="no" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="no" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
-                    $req2 = mysql_query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.username from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="yes" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="yes" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
+//We list his messages in a table
+//Two queries are executes, one for the unread messages and another for read messages
+                    $req1 = @mysql_query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.username from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="no" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="no" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
+                    $req2 = @mysql_query('select m1.id, m1.title, m1.timestamp, count(m2.id) as reps, users.id as userid, users.username from pm as m1, pm as m2,users where ((m1.user1="'.$_SESSION['userid'].'" and m1.user1read="yes" and users.id=m1.user2) or (m1.user2="'.$_SESSION['userid'].'" and m1.user2read="yes" and users.id=m1.user1)) and m1.id2="1" and m2.id=m1.id group by m1.id order by m1.id desc');
                     ?>
                     This is the list of your messages:<br />
                     <a href="new_pm.php" class="link_new_pm">New PM</a><br />
@@ -61,7 +61,7 @@
                             <th>Date of creation</th>
                         </tr>
                         <?php
-                //We display the list of unread messages
+//We display the list of unread messages
                         while($dn1 = mysql_fetch_array($req1))
                         {
                             ?>
@@ -73,7 +73,7 @@
                             </tr>
                             <?php
                         }
-                //If there is no unread message we notice it
+//If there is no unread message we notice it
                         if(intval(mysql_num_rows($req1))==0)
                         {
                             ?>
@@ -94,7 +94,7 @@
                             <th>Date or creation</th>
                         </tr>
                         <?php
-                //We display the list of read messages
+//We display the list of read messages
                         while($dn2 = mysql_fetch_array($req2))
                         {
                             ?>
@@ -106,7 +106,7 @@
                             </tr>
                             <?php
                         }
-                //If there is no read message we notice it
+//If there is no read message we notice it
                         if(intval(mysql_num_rows($req2))==0)
                         {
                             ?>
