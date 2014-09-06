@@ -9,6 +9,8 @@
 
         //display links
         ?>
+        <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
+
             <ul>
                 <li><a href="index.php">Начало</a></li>
                 <li><a href="edit_infos.php">.:Профил:.</a></li>
@@ -24,6 +26,8 @@
     {
         //Otherwise, we display a link to log in and to Sign up
         ?>
+        <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon-2.png" alt="Logo" /></a>
+
             <ul>
                 <li><a href="index.php">Начало</a></li>
                 <li><a href="login.php">Вход</a></li>
