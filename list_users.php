@@ -15,21 +15,12 @@
 
     <div class="header wrapper rounds wrapper-background">
 
-        <h1>Members Area :)</h1>
-        <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
-        <ul>
-            <li><a href="index.php">Начало</a></li>
-            <li><a href="login.php">Вход</a></li>
-            <li><a href="logout.php">Изход</a></li>
-            <li><a href="read_pm.php">Нови Съобщения</a></li>
-            <li><a href="edit_infos.php.php">Профил</a></li>
-            <li><a href="list_users.php">Потребители</a></li>
-            <li><a href="sign_up.php">Регистрация 2</a></li>
-            <li><a href="register.php">Регистрация</a></li>
-            <li><a href="messages.php">Съобщения</a></li>
-            <li><a href="setup-config-database-firstrun.php">Конфигурация</a></li>
-            <li><a href="read_me.html">Документация</a></li>
-        </ul>
+        <h1>List of users :)</h1>
+        <?php
+            //include('menu.php');
+            include('menu_items.php');
+            //include('check_if_login.php');
+        ?>
     </div>
 
     <div class="container wrapper rounds wrapper-background2">
@@ -49,22 +40,22 @@
                         <th width="1%">Email</th>
                     </tr>
                     <?php
-                //We get the IDs, usernames and emails of users
-                    $req = mysql_query('select id, username, email from users');
+                        //We get the IDs, usernames and emails of users
+                        $req = mysql_query('select id, username, email from users');
 
-                    //while($dnn = mysql_fetch_array($req))
-                    while($dnn = mysql_fetch_array($req) or die ($req.'<p><code>'.mysql_error().'</code></p>'))
+                        //while($dnn = mysql_fetch_array($req))
+                        while($dnn = mysql_fetch_array($req) or die ($req.'<p><code>'.mysql_error().'</code></p>'))
 
-                        // fixed by me!!!
-                    {
-                        ?>
-                        <tr>
-                            <td class="left"><?php echo $dnn['id']; ?></td>
-                            <td class="left"><a href="profile.php?id=<?php echo $dnn['id']; ?>"><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></a></td>
-                            <td class="left"><?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?></td>
-                        </tr>
-                        <?php
-                    }
+                            // fixed by me!!!
+                        {
+                            ?>
+                            <tr>
+                                <td class="left"><?php echo $dnn['id']; ?></td>
+                                <td class="left"><a href="profile.php?id=<?php echo $dnn['id']; ?>"><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></a></td>
+                                <td class="left"><?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?></td>
+                            </tr>
+                            <?php
+                        }
                     ?>
                 </table>
 
@@ -75,11 +66,9 @@
     </div><!-- end of /container-->
 
     <div class="footer wrapper rounds wrapper-background">
-        <ul>
-            <a href="index.php">SLFWPM</a> by
-            <a href="vaseto.net">Vaseto.net</a>
-            <strong>2014 CC BY-NC-SA.</strong>
-        </ul>
+        <?php
+            include('footer.php');
+        ?>
     </div>
 
 </body>

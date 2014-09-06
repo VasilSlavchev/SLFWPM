@@ -31,7 +31,6 @@ body {
 
 .wrapper-background {
     background-image: url('../images/background_square.png');
-/*    background-image: url('../images/probno.png');*/
 /*    background: #0ca3d2; opacity: 0.6;*/
 }
 
@@ -57,7 +56,7 @@ body {
 
 .header .logo {
     position: absolute;
-    top: 35px;
+    top: 15px;
     left: 290px;
     float: left;
     width: 85px;
@@ -169,8 +168,8 @@ body {
 
 .register .button {
     position: relative;
-    left: 230px;
-    top: 60px;
+    left: 0px;
+    top: 50px;
     float: right;
     border: 1px solid #0ca3d2;
 }
@@ -278,7 +277,7 @@ input[type=submit] {
 @media only screen and (max-width : 219px) {
     body {
         width: 98%;
-        height: 98%;
+        height: 99%;
         margin: 0;
         padding: 0;
     }
@@ -315,7 +314,7 @@ input[type=submit] {
 
     .header {
         width: 100%;
-        height: 100%;
+        height: 75%;
     }
 
     .header  ul  li  a {
@@ -335,7 +334,7 @@ input[type=submit] {
 
     .footer {
         width: 100%;
-        height: 100%;
+        height: 15%;
         margin: 0;
         padding: 0;
     }
@@ -349,19 +348,21 @@ input[type=submit] {
     }
 
     .header {
-        width: 110%;
-        height: 110%;
+        width: 85%;
+        height: 33%;
+        margin: 0;
+        padding: 0;
     }
 
     .header  ul  li  a {
         position: relative;
         display: inline-block;
         top: 0;
-        right: 60px;
+        right: 70px;
         padding-right: 8px;
     }
     .container {
-        width: 110%;
+        width: 85%;
         height: 110%;
         margin: 0;
         padding: 0;
@@ -369,8 +370,8 @@ input[type=submit] {
     }
 
     .footer {
-        width: 110%;
-        height: 110%;
+        width: 85%;
+        height: 15%;
         margin: 0;
         padding: 0;
     }
@@ -386,7 +387,7 @@ input[type=submit] {
 
     .header {
         width: 100%;
-        height: 100%;
+        height: 30%;
     }
 
     .header  ul  li  a {
@@ -406,7 +407,7 @@ input[type=submit] {
 
     .footer {
         width: 100%;
-        height: 100%;
+        height: 30%;
         margin: 0;
         padding: 0;
     }
@@ -422,7 +423,7 @@ input[type=submit] {
 
     .header {
         width: 100%;
-        height: 100%;
+        height: 35%;
     }
 
     .header  ul  li  a {
@@ -442,7 +443,7 @@ input[type=submit] {
 
     .footer {
         width: 100%;
-        height: 100%;
+        height: 20%;
         margin: 0;
         padding: 0;
     }
@@ -458,7 +459,7 @@ input[type=submit] {
 
     .header {
         width: 100%;
-        height: 100%;
+        height: 35%;
     }
 
     .header  ul  li  a {

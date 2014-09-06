@@ -13,25 +13,15 @@
 </head>
 <body>
 
-    <div class="header wrapper rounds wrapper-background">
+<div class="header wrapper rounds wrapper-background">
 
-        <h1>Members Area :)</h1>
-        <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
-        <ul>
-            <li><a href="index.php">Начало</a></li>
-            <li><a href="login.php">Вход</a></li>
-            <li><a href="logout.php">Изход</a></li>
-            <li><a href="read_pm.php">Нови Съобщения</a></li>
-            <li><a href="edit_infos.php.php">Профил</a></li>
-            <li><a href="list_users.php">Потребители</a></li>
-            <li><a href="sign_up.php">Регистрация 2</a></li>
-            <li><a href="register.php">Регистрация</a></li>
-            <li><a href="messages.php">Съобщения</a></li>
-            <li><a href="setup-config-database-firstrun.php">Конфигурация</a></li>
-            <li><a href="read_me.html">Документация</a></li>
-        </ul>
-
-    </div>
+    <h1>Profile Area :)</h1>
+        <?php
+            //include('menu.php');
+            include('menu_items.php');
+            //include('check_if_login.php');
+        ?>
+</div>
 
     <div class="container wrapper rounds wrapper-background2">
 
@@ -180,12 +170,10 @@
                     {
                         ?>
                         <div class="message">To access this page, you must be logged.<br />
-                            <a href="connexion.php">Log in</a></div>
+                            <a href="login.php">Log in</a></div>
                             <?php
                         }
                         ?>
-
-
 
                     </div><!-- end of /login-->
 
