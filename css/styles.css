@@ -22,6 +22,10 @@ body {
    /* background-image: url('../images/background2.jpg');*/
 }
 
+body h1 {
+    color: #ffffff;
+}
+
 .wrapper {
     margin: 0 auto;
     padding: 0px;
