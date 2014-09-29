@@ -25,6 +25,9 @@ body {
 body h1 {
     color: #ffffff;
 }
+body ul li {
+    color: #ffffff;
+}
 
 .wrapper {
     margin: 0 auto;
@@ -128,6 +131,16 @@ body h1 {
     border-radius: 15px;
 }
 
+.users table, th, td {
+    margin: 10px auto;
+    border: 1px groove #0ca3d2;
+}
+
+.users th {
+    background-color: #0ca3d2;
+    border: 1px groove #0ca3d2;
+    color: white;
+}
 /*==============================================================
                     Messages
 ==============================================================*/

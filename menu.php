@@ -1,7 +1,6 @@
-<?php
+r<?php
 // thats menu file.
 //header('menu.php');
-
 ?>
 <a href="<?php echo $site_url; ?>"><img class="logo" src="<?php echo $theme; ?>/images/Messages-icon.png" alt="Logo" /></a>
 <ul>

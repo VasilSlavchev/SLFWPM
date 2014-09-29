@@ -35,25 +35,26 @@
 
                 <table>
                     <tr>
-                        <th width="1%">ID:</th>
-                        <th width="1%">Username</th>
-                        <th width="1%">Email</th>
+                        <th width="50px">ID</th>
+                        <th width="130px">Username</th>
+                        <th width="150px">Email</th>
+                        <th width="180px">Sign up date</th>
                     </tr>
                     <?php
                         //We get the IDs, usernames and emails of users
-                        $req = mysql_query('select id, username, email from users');
+                        $req = mysql_query('select id, username, email, signup_date from users');
 
-                        //while($dnn = mysql_fetch_array($req))
-                        while($dnn = mysql_fetch_array($req) or die ($req.'<p><code>'.mysql_error().'</code></p>'))
-
+                        while($dnn = mysql_fetch_array($req))
+                        //while($dnn = mysql_fetch_array($req) or die ($req.'<code>'.mysql_error().'</code>'))
                             // fixed by me!!!
                         {
                             ?>
-                            <tr>
-                                <td class="left"><?php echo $dnn['id']; ?></td>
-                                <td class="left"><a href="profile.php?id=<?php echo $dnn['id']; ?>"><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></a></td>
-                                <td class="left"><?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?></td>
-                            </tr>
+                                <tr>
+                                    <td style="float:center; padding-left:20px;"><?php echo $dnn['id']; ?></td>
+                                    <td style="float:center; padding-left:50px;"><a href="profile.php?id=<?php echo $dnn['id']; ?>"><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></a></td>
+                                    <td style="float:center; padding: 0 30px 0 30px;"><?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td style="float:center; padding: 0 5px 0 20px;"><?php echo date($dnn['signup_date']); ?></td>
+                                </tr>
                             <?php
                         }
                     ?>

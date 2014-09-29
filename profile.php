@@ -41,10 +41,10 @@
                     if(mysql_num_rows($dn)>0)
                     {
                         $dnn = mysql_fetch_array($dn);
-                            //We display the user datas
+                        //We display the user data
                         ?>
                         This is the profile of "<?php echo htmlentities($dnn['username']); ?>" :
-                        <table style="width:500px;">
+                        <table style="width:350px;">
                             <tr>
                                 <td><?php
                                 if($dnn['avatar']!='')
@@ -56,13 +56,14 @@
                                     echo 'This user dont have an avatar.';
                                 }
                                 ?></td>
-                                <td class="left"><h1><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></h1>
+                                <td class="left">
+                                    <h1><?php echo htmlentities($dnn['username'], ENT_QUOTES, 'UTF-8'); ?></h1>
                                     Email: <?php echo htmlentities($dnn['email'], ENT_QUOTES, 'UTF-8'); ?><br />
-                                    This user joined the website on <?php echo date('Y/m/d',$dnn['signup_date']); ?></td>
+                                    This user joined the website on: <br><?php echo date($dnn['signup_date']); ?></td>
                                 </tr>
                             </table>
                             <?php
-                    //We add a link to send a pm to the user
+                            //We add a link to send a pm to the user
                             if(isset($_SESSION['username']))
                             {
                                 ?>

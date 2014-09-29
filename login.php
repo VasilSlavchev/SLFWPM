@@ -13,7 +13,7 @@
 
     <div class="header wrapper rounds wrapper-background">
 
-        <h1>Login Area :)</h1>
+    <h1>Login Area :)</h1>
         <?php
             //include('menu.php');
             include('menu_items.php');
@@ -107,13 +107,13 @@
                 <?php
                     }
                 }
-                ?>
+            ?>
 
-                    </div><!-- end of /login-->
+            </div><!-- end of /login-->
 
-                </div><!-- end of /content-->
+        </div><!-- end of /content-->
 
-            </div><!-- end of /container-->
+    </div><!-- end of /container-->
 
     <div class="footer wrapper rounds wrapper-background">
         <?php

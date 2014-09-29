@@ -45,10 +45,10 @@
                     else
                     {
                         $ousername = '';
-                    //We check if the form has been sent
+                        //We check if the form has been sent
                         if(isset($_POST['username'], $_POST['password']))
                         {
-                        //We remove slashes depending on the configuration
+                            //We remove slashes depending on the configuration
                             if(get_magic_quotes_gpc())
                             {
                                 $ousername = stripslashes($_POST['username']);
@@ -60,15 +60,15 @@
                                 $username = mysql_real_escape_string($_POST['username']);
                                 $password = $_POST['password'];
                             }
-                        //We get the password of the user
+                            //We get the password of the user
                             $req = mysql_query('select password,id from users where username="'.$username.'"');
                             $dn = mysql_fetch_array($req);
-                        //We compare the submited password and the real one, and we check if the user exists
+                            //We compare the submited password and the real one, and we check if the user exists
                             if($dn['password']==$password and mysql_num_rows($req)>0)
                             {
                             //If the password is good, we dont show the form
                                 $form = false;
-                            //We save the user name in the session username and the user Id in the session userid
+                                //We save the user name in the session username and the user Id in the session userid
                                 $_SESSION['username'] = $_POST['username'];
                                 $_SESSION['userid'] = $dn['id'];
                                 ?>
@@ -78,7 +78,7 @@
                                 }
                                 else
                                 {
-                            //Otherwise, we say the password is incorrect.
+                                    //Otherwise, we say the password is incorrect.
                                     $form = true;
                                     $message = 'The username or password is incorrect.';
                                 }
@@ -94,7 +94,7 @@
                                 {
                                     echo '<div class="message">'.$message.'</div>';
                                 }
-                            //We display the form
+                                //We display the form
                                 ?>
                                 <div class="content">
                                     <form action="login.php" method="post">
@@ -109,13 +109,13 @@
                                 <?php
                             }
                         }
-                        ?>
+                    ?>
 
-                    </div><!-- end of /login-->
+                </div><!-- end of /login-->
 
-                </div><!-- end of /content-->
+            </div><!-- end of /content-->
 
-            </div><!-- end of /container-->
+        </div><!-- end of /container-->
 
     <div class="footer wrapper rounds wrapper-background">
         <?php

@@ -33,8 +33,10 @@
 
             <p> Welcome to Simple Login Form With PM Messages. </p>
 
-            <?php if(isset($_SESSION['username'])){echo ' '.htmlentities($_SESSION['username'], ENT_QUOTES, 'UTF-8');} ?><br/>
-            Тук може да видиш <a href="list_users.php">списък с потребителите</a>.<br/>
+            <?php if(isset($_SESSION['username'])){
+                echo 'Влезнал като: '.htmlentities($_SESSION['username'], ENT_QUOTES, 'UTF-8');
+                } ?><br/>
+            <p>Тук може да видиш <a href="list_users.php">списък с потребителите</a>.
 
             <?php
 
@@ -47,17 +49,21 @@
                     $nb_new_pm = $nb_new_pm['nb_new_pm'];
                             //We display the links
                     ?>
-                    <a href="edit_infos.php">Промени профилната информация.</a><br />
-                    <a href="list_pm.php">Моите лични съобщения: (<?php echo $nb_new_pm; ?> непрочетено)</a><br />
-                    <a href="login.php">Излез</a>
+                    <ul>
+                    <li><a href="edit_infos.php">Промени профилната информация.</a></li>
+                    <li><a href="list_pm.php">Моите лични съобщения: (<?php echo $nb_new_pm; ?> непрочетено)</a></li>
+                    <li><a href="login.php">Излез</a></li>
+                    </ul>
                     <?php
                 }
                 else
                 {
                     //Otherwise, we display a link to log in and to Sign up
                     ?>
-                    <a href="register.php">Register here</a><br/>
-                    <a href="login.php">Log in here</a>
+                    <ul>
+                    <li><a href="register.php">Регистрирай се тук</a></li>
+                    <li><a href="login.php">Или влез от тук</a></li>
+                    </ul>
                     <?php
                 }
             ?>
